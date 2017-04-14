@@ -1,3 +1,3 @@
 <?php
-unlink('../bak');
+unlink('../bak/example.txt.bak');
 ?>
