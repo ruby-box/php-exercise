@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="kr">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+  <title>PHP: 네임스페이스 개요 - Manual </title>
+
+ <link rel="shortcut icon" href="http://php.net/favicon.ico">
+ <link rel="search" type="application/opensearchdescription+xml" href="http://php.net/phpnetimprovedsearch.src" title="Add PHP.net search">
+ <link rel="alternate" type="application/atom+xml" href="http://php.net/releases/feed.php" title="PHP Release feed">
+ <link rel="alternate" type="application/atom+xml" href="http://php.net/feed.atom" title="PHP: Hypertext Preprocessor">
+
+ <link rel="canonical" href="http://php.net/manual/kr/language.namespaces.rationale.php">
+ <link rel="shorturl" href="http://php.net/namespaces.rationale">
+ <link rel="alternate" href="http://php.net/namespaces.rationale" hreflang="x-default">
+
+ <link rel="contents" href="http://php.net/manual/kr/index.php">
+ <link rel="index" href="http://php.net/manual/kr/language.namespaces.php">
+ <link rel="prev" href="http://php.net/manual/kr/language.namespaces.php">
+ <link rel="next" href="http://php.net/manual/kr/language.namespaces.definition.php">
+
+ <link rel="alternate" href="http://php.net/manual/en/language.namespaces.rationale.php" hreflang="en">
+ <link rel="alternate" href="http://php.net/manual/pt_BR/language.namespaces.rationale.php" hreflang="pt_BR">
+ <link rel="alternate" href="http://php.net/manual/zh/language.namespaces.rationale.php" hreflang="zh">
+ <link rel="alternate" href="http://php.net/manual/fr/language.namespaces.rationale.php" hreflang="fr">
+ <link rel="alternate" href="http://php.net/manual/de/language.namespaces.rationale.php" hreflang="de">
+ <link rel="alternate" href="http://php.net/manual/ja/language.namespaces.rationale.php" hreflang="ja">
+ <link rel="alternate" href="http://php.net/manual/ro/language.namespaces.rationale.php" hreflang="ro">
+ <link rel="alternate" href="http://php.net/manual/ru/language.namespaces.rationale.php" hreflang="ru">
+ <link rel="alternate" href="http://php.net/manual/es/language.namespaces.rationale.php" hreflang="es">
+ <link rel="alternate" href="http://php.net/manual/tr/language.namespaces.rationale.php" hreflang="tr">
+
+<link rel="stylesheet" type="text/css" href="http://php.net/cached.php?t=1421837618&amp;f=/fonts/Fira/fira.css" media="screen">
+<link rel="stylesheet" type="text/css" href="http://php.net/cached.php?t=1421837618&amp;f=/fonts/Font-Awesome/css/fontello.css" media="screen">
+<link rel="stylesheet" type="text/css" href="http://php.net/cached.php?t=1478800802&amp;f=/styles/theme-base.css" media="screen">
+<link rel="stylesheet" type="text/css" href="http://php.net/cached.php?t=1449787206&amp;f=/styles/theme-medium.css" media="screen">
+
+ <!--[if lte IE 7]>
+ <link rel="stylesheet" type="text/css" href="http://php.net/styles/workarounds.ie7.css" media="screen">
+ <![endif]-->
+
+ <!--[if lte IE 8]>
+ <script type="text/javascript">
+  window.brokenIE = true;
+ </script>
+ <![endif]-->
+
+ <!--[if lte IE 9]>
+ <link rel="stylesheet" type="text/css" href="http://php.net/styles/workarounds.ie9.css" media="screen">
+ <![endif]-->
+
+ <!--[if IE]>
+ <script type="text/javascript" src="http://php.net/js/ext/html5.js"></script>
+ <![endif]-->
+
+ <base href="http://php.net/manual/kr/language.namespaces.rationale.php">
+
+</head>
+<body class="docs ">
+
+<nav id="head-nav" class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <a href="/" class="brand"><img src="/images/logos/php-logo.svg" width="48" height="24" alt="php"></a>
+    <div id="mainmenu-toggle-overlay"></div>
+    <input type="checkbox" id="mainmenu-toggle">
+    <ul class="nav">
+      <li class=""><a href="/downloads">Downloads</a></li>
+      <li class="active"><a href="/docs.php">Documentation</a></li>
+      <li class=""><a href="/get-involved" >Get Involved</a></li>
+      <li class=""><a href="/support">Help</a></li>
+    </ul>
+    <form class="navbar-search" id="topsearch" action="/search.php">
+      <input type="hidden" name="show" value="quickref">
+      <input type="search" name="pattern" class="search-query" placeholder="Search" accesskey="s">
+    </form>
+  </div>
+  <div id="flash-message"></div>
+</nav>
+<nav id="trick"><div><dl>
+<dt><a href='/manual/en/getting-started.php'>Getting Started</a></dt>
+	<dd><a href='/manual/en/introduction.php'>Introduction</a></dd>
+	<dd><a href='/manual/en/tutorial.php'>A simple tutorial</a></dd>
+<dt><a href='/manual/en/langref.php'>Language Reference</a></dt>
+	<dd><a href='/manual/en/language.basic-syntax.php'>Basic syntax</a></dd>
+	<dd><a href='/manual/en/language.types.php'>Types</a></dd>
+	<dd><a href='/manual/en/language.variables.php'>Variables</a></dd>
+	<dd><a href='/manual/en/language.constants.php'>Constants</a></dd>
+	<dd><a href='/manual/en/language.expressions.php'>Expressions</a></dd>
+	<dd><a href='/manual/en/language.operators.php'>Operators</a></dd>
+	<dd><a href='/manual/en/language.control-structures.php'>Control Structures</a></dd>
+	<dd><a href='/manual/en/language.functions.php'>Functions</a></dd>
+	<dd><a href='/manual/en/language.oop5.php'>Classes and Objects</a></dd>
+	<dd><a href='/manual/en/language.namespaces.php'>Namespaces</a></dd>
+	<dd><a href='/manual/en/language.errors.php'>Errors</a></dd>
+	<dd><a href='/manual/en/language.exceptions.php'>Exceptions</a></dd>
+	<dd><a href='/manual/en/language.generators.php'>Generators</a></dd>
+	<dd><a href='/manual/en/language.references.php'>References Explained</a></dd>
+	<dd><a href='/manual/en/reserved.variables.php'>Predefined Variables</a></dd>
+	<dd><a href='/manual/en/reserved.exceptions.php'>Predefined Exceptions</a></dd>
+	<dd><a href='/manual/en/reserved.interfaces.php'>Predefined Interfaces and Classes</a></dd>
+	<dd><a href='/manual/en/context.php'>Context options and parameters</a></dd>
+	<dd><a href='/manual/en/wrappers.php'>Supported Protocols and Wrappers</a></dd>
+</dl>
+<dl>
+<dt><a href='/manual/en/security.php'>Security</a></dt>
+	<dd><a href='/manual/en/security.intro.php'>Introduction</a></dd>
+	<dd><a href='/manual/en/security.general.php'>General considerations</a></dd>
+	<dd><a href='/manual/en/security.cgi-bin.php'>Installed as CGI binary</a></dd>
+	<dd><a href='/manual/en/security.apache.php'>Installed as an Apache module</a></dd>
+	<dd><a href='/manual/en/security.sessions.php'>Session Security</a></dd>
+	<dd><a href='/manual/en/security.filesystem.php'>Filesystem Security</a></dd>
+	<dd><a href='/manual/en/security.database.php'>Database Security</a></dd>
+	<dd><a href='/manual/en/security.errors.php'>Error Reporting</a></dd>
+	<dd><a href='/manual/en/security.globals.php'>Using Register Globals</a></dd>
+	<dd><a href='/manual/en/security.variables.php'>User Submitted Data</a></dd>
+	<dd><a href='/manual/en/security.magicquotes.php'>Magic Quotes</a></dd>
+	<dd><a href='/manual/en/security.hiding.php'>Hiding PHP</a></dd>
+	<dd><a href='/manual/en/security.current.php'>Keeping Current</a></dd>
+<dt><a href='/manual/en/features.php'>Features</a></dt>
+	<dd><a href='/manual/en/features.http-auth.php'>HTTP authentication with PHP</a></dd>
+	<dd><a href='/manual/en/features.cookies.php'>Cookies</a></dd>
+	<dd><a href='/manual/en/features.sessions.php'>Sessions</a></dd>
+	<dd><a href='/manual/en/features.xforms.php'>Dealing with XForms</a></dd>
+	<dd><a href='/manual/en/features.file-upload.php'>Handling file uploads</a></dd>
+	<dd><a href='/manual/en/features.remote-files.php'>Using remote files</a></dd>
+	<dd><a href='/manual/en/features.connection-handling.php'>Connection handling</a></dd>
+	<dd><a href='/manual/en/features.persistent-connections.php'>Persistent Database Connections</a></dd>
+	<dd><a href='/manual/en/features.safe-mode.php'>Safe Mode</a></dd>
+	<dd><a href='/manual/en/features.commandline.php'>Command line usage</a></dd>
+	<dd><a href='/manual/en/features.gc.php'>Garbage Collection</a></dd>
+	<dd><a href='/manual/en/features.dtrace.php'>DTrace Dynamic Tracing</a></dd>
+</dl>
+<dl>
+<dt><a href='/manual/en/funcref.php'>Function Reference</a></dt>
+	<dd><a href='/manual/en/refs.basic.php.php'>Affecting PHP's Behaviour</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.audio.php'>Audio Formats Manipulation</a></dd>
+	<dd><a href='/manual/en/refs.remote.auth.php'>Authentication Services</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.cmdline.php'>Command Line Specific Extensions</a></dd>
+	<dd><a href='/manual/en/refs.compression.php'>Compression and Archive Extensions</a></dd>
+	<dd><a href='/manual/en/refs.creditcard.php'>Credit Card Processing</a></dd>
+	<dd><a href='/manual/en/refs.crypto.php'>Cryptography Extensions</a></dd>
+	<dd><a href='/manual/en/refs.database.php'>Database Extensions</a></dd>
+	<dd><a href='/manual/en/refs.calendar.php'>Date and Time Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.fileprocess.file.php'>File System Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.international.php'>Human Language and Character Encoding Support</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.image.php'>Image Processing and Generation</a></dd>
+	<dd><a href='/manual/en/refs.remote.mail.php'>Mail Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.math.php'>Mathematical Extensions</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.nontext.php'>Non-Text MIME Output</a></dd>
+	<dd><a href='/manual/en/refs.fileprocess.process.php'>Process Control Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.other.php'>Other Basic Extensions</a></dd>
+	<dd><a href='/manual/en/refs.remote.other.php'>Other Services</a></dd>
+	<dd><a href='/manual/en/refs.search.php'>Search Engine Extensions</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.server.php'>Server Specific Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.session.php'>Session Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.text.php'>Text Processing</a></dd>
+	<dd><a href='/manual/en/refs.basic.vartype.php'>Variable and Type Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.webservice.php'>Web Services</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.windows.php'>Windows Only Extensions</a></dd>
+	<dd><a href='/manual/en/refs.xml.php'>XML Manipulation</a></dd>
+	<dd><a href='/manual/en/refs.ui.php'>GUI Extensions</a></dd>
+</dl>
+<dl>
+<dt>Keyboard Shortcuts</dt><dt>?</dt>
+<dd>This help</dd>
+<dt>j</dt>
+<dd>Next menu item</dd>
+<dt>k</dt>
+<dd>Previous menu item</dd>
+<dt>g p</dt>
+<dd>Previous man page</dd>
+<dt>g n</dt>
+<dd>Next man page</dd>
+<dt>G</dt>
+<dd>Scroll to bottom</dd>
+<dt>g g</dt>
+<dd>Scroll to top</dd>
+<dt>g h</dt>
+<dd>Goto homepage</dd>
+<dt>g s</dt>
+<dd>Goto search<br>(current page)</dd>
+<dt>/</dt>
+<dd>Focus search box</dd>
+</dl></div></nav>
+<div id="goto">
+    <div class="search">
+         <div class="text"></div>
+         <div class="results"><ul></ul></div>
+   </div>
+</div>
+
+  <div id="breadcrumbs" class="clearfix">
+    <div id="breadcrumbs-inner">
+          <div class="next">
+        <a href="language.namespaces.definition.php">
+          Defining namespaces &raquo;
+        </a>
+      </div>
+              <div class="prev">
+        <a href="language.namespaces.php">
+          &laquo; 네임스페이스        </a>
+      </div>
+          <ul>
+            <li><a href='index.php'>PHP 매뉴얼</a></li>      <li><a href='langref.php'>언어 레퍼런스</a></li>      <li><a href='language.namespaces.php'>네임스페이스</a></li>      </ul>
+    </div>
+  </div>
+
+
+
+
+<div id="layout" class="clearfix">
+  <section id="layout-content">
+  <div class="page-tools">
+    <div class="change-language">
+      <form action="/manual/change.php" method="get" id="changelang" name="changelang">
+        <fieldset>
+          <label for="changelang-langs">Change language:</label>
+          <select onchange="document.changelang.submit()" name="page" id="changelang-langs">
+            <option value='en/language.namespaces.rationale.php'>English</option>
+            <option value='pt_BR/language.namespaces.rationale.php'>Brazilian Portuguese</option>
+            <option value='zh/language.namespaces.rationale.php'>Chinese (Simplified)</option>
+            <option value='fr/language.namespaces.rationale.php'>French</option>
+            <option value='de/language.namespaces.rationale.php'>German</option>
+            <option value='ja/language.namespaces.rationale.php'>Japanese</option>
+            <option value='ro/language.namespaces.rationale.php'>Romanian</option>
+            <option value='ru/language.namespaces.rationale.php'>Russian</option>
+            <option value='es/language.namespaces.rationale.php'>Spanish</option>
+            <option value='tr/language.namespaces.rationale.php'>Turkish</option>
+            <option value="help-translate.php" selected="selected">Other</option>
+          </select>
+        </fieldset>
+      </form>
+    </div>
+    <div class="edit-bug">
+      <a href="https://edit.php.net/?project=PHP&amp;perm=kr/language.namespaces.rationale.php">Edit</a>
+      <a href="https://bugs.php.net/report.php?bug_type=Documentation+problem&amp;manpage=language.namespaces.rationale">Report a Bug</a>
+    </div>
+  </div><div id="language.namespaces.rationale" class="sect1">
+  <h2 class="title">네임스페이스 개요</h2>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7)</p>
+  <p class="simpara">
+   네임스페이스란 무엇일까요? 넓은 의미로 볼 때 네임스페이스는 내용을 캡슐화 하는 방법중 하나입니다. 이것은 다양한 관점에서 추상적인 개념으로 볼 수 있습니다.
+   예를 들면 운영체제에서 디렉토리는 관련된 파일들의 그룹을 담당하고, 그 안에 있는 파일들의 네임스페이스 역할을 합니다.
+   구체적인 예로, 파일 <em>foo.txt</em>는 디렉토리<em>/home/greg</em> 와 <em>/home/other</em>에 각각 존재 할 수 있습니다.
+   하지만, <em>foo.txt</em>라는 두개의 사본은 동일한 디렉토리에 동시에 존재할 수는 없습니다. 게다가 <em>/home/greg</em> 디렉토리 바깥에서 <em>foo.txt</em> 파일에 접근하려면,
+   디렉토리 구분자와 함께 파일 이름 앞에 디렉토리 이름을 붙여서 <em>/home/greg/foo.txt</em> 처럼 접근해야 합니다.
+   이와 같은 원칙은 프로그래밍 세계에서 네임스페이스로 확장됩니다.
+  </p>
+  <p class="simpara">
+   In the PHP world, namespaces are designed to solve two problems that authors
+   of libraries and applications encounter when creating re-usable code elements
+   such as classes or functions:
+  </p>
+  <p class="para">
+   <ol type="1">
+    <li class="listitem">
+     <span class="simpara">
+      Name collisions between code you create, and
+      internal PHP classes/functions/constants or third-party classes/functions/constants.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Ability to alias (or shorten) Extra_Long_Names designed to alleviate the first problem,
+      improving readability of source code.
+     </span>
+    </li>
+   </ol>
+  </p>
+  <p class="simpara">
+   PHP Namespaces provide a way in which to group related classes, interfaces, 
+   functions and constants.  Here is an example of namespace syntax in PHP:
+  </p>
+  <div class="example" id="example-228">
+   <p><strong>Example #1 Namespace syntax example</strong></p>
+   <div class="example-contents">
+   <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">namespace&nbsp;</span><span style="color: #0000BB">my</span><span style="color: #007700">\</span><span style="color: #0000BB">name</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;see&nbsp;"Defining&nbsp;Namespaces"&nbsp;section<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyClass&nbsp;</span><span style="color: #007700">{}<br />function&nbsp;</span><span style="color: #0000BB">myfunction</span><span style="color: #007700">()&nbsp;{}<br />const&nbsp;</span><span style="color: #0000BB">MYCONST&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyClass</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">my</span><span style="color: #007700">\</span><span style="color: #0000BB">name</span><span style="color: #007700">\</span><span style="color: #0000BB">MyClass</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;see&nbsp;"Global&nbsp;Space"&nbsp;section<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;see&nbsp;"Using&nbsp;namespaces:&nbsp;fallback&nbsp;to&nbsp;global<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;function/constant"&nbsp;section<br /><br /></span><span style="color: #0000BB">$d&nbsp;</span><span style="color: #007700">=&nbsp;namespace\</span><span style="color: #0000BB">MYCONST</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;see&nbsp;"namespace&nbsp;operator&nbsp;and&nbsp;__NAMESPACE__<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;constant"&nbsp;section<br /></span><span style="color: #0000BB">$d&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">__NAMESPACE__&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'\MYCONST'</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">constant</span><span style="color: #007700">(</span><span style="color: #0000BB">$d</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;see&nbsp;"Namespaces&nbsp;and&nbsp;dynamic&nbsp;language&nbsp;features"&nbsp;section<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    Namespace names <em>PHP</em> and <em>php</em>, and compound names starting
+    with these names (like <em>PHP\Classes</em>) are reserved for internal language use 
+    and should not be used in the userspace code. 
+   </p>
+  </p></blockquote>
+ </div>
+<section id="usernotes">
+ <div class="head">
+  <span class="action"><a href="/manual/add-note.php?sect=language.namespaces.rationale&amp;redirect=http://php.net/manual/kr/language.namespaces.rationale.php"><img src='/images/notes-add@2x.png' alt='add a note' width='12' height='12'> <small>add a note</small></a></span>
+  <h3 class="title">User Contributed Notes <span class="count">6 notes</span></h3>
+ </div><div id="allnotes">
+  <div class="note" id="102662">  <div class="votes">
+    <div id="Vu102662">
+    <a href="/manual/vote-note.php?id=102662&amp;page=language.namespaces.rationale&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd102662">
+    <a href="/manual/vote-note.php?id=102662&amp;page=language.namespaces.rationale&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V102662" title="79% like this...">
+    469
+    </div>
+  </div>
+  <a href="#102662" class="name">
+  <strong class="user"><em>SteveWa</em></strong></a><a class="genanchor" href="#102662"> &para;</a><div class="date" title="2011-02-27 08:45"><strong>6 years ago</strong></div>
+  <div class="text" id="Hcom102662">
+<div class="phpcode"><code><span class="html">
+Thought this might help other newbies like me...<br /><br />Name collisions means: <br />you create a function named db_connect, and somebody elses code that you use in your file (i.e. an include) has the same function with the same name.<br /><br />To get around that problem, you rename your function SteveWa_db_connect&nbsp; which makes your code longer and harder to read.<br /><br />Now you can use namespaces to keep your function name separate from anyone else's function name, and you won't have to make extra_long_named functions to get around the name collision problem.<br /><br />So a namespace is like a pointer to a file path where you can find the source of the function you are working with</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="104196">  <div class="votes">
+    <div id="Vu104196">
+    <a href="/manual/vote-note.php?id=104196&amp;page=language.namespaces.rationale&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd104196">
+    <a href="/manual/vote-note.php?id=104196&amp;page=language.namespaces.rationale&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V104196" title="73% like this...">
+    148
+    </div>
+  </div>
+  <a href="#104196" class="name">
+  <strong class="user"><em>Dmitry Snytkine</em></strong></a><a class="genanchor" href="#104196"> &para;</a><div class="date" title="2011-05-31 06:54"><strong>5 years ago</strong></div>
+  <div class="text" id="Hcom104196">
+<div class="phpcode"><code><span class="html">
+Just a note: namespace (even nested or sub-namespace) cannot be just a number, it must start with a letter.<br />For example, lets say you want to use namespace for versioning of your packages or versioning of your API:<br /><br />namespace Mynamespace\1;&nbsp; // Illegal<br />Instead use this:<br />namespace Mynamespace\v1; // OK</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="116280">  <div class="votes">
+    <div id="Vu116280">
+    <a href="/manual/vote-note.php?id=116280&amp;page=language.namespaces.rationale&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd116280">
+    <a href="/manual/vote-note.php?id=116280&amp;page=language.namespaces.rationale&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V116280" title="71% like this...">
+    68
+    </div>
+  </div>
+  <a href="#116280" class="name">
+  <strong class="user"><em>pierstoval at gmail dot com</em></strong></a><a class="genanchor" href="#116280"> &para;</a><div class="date" title="2014-12-05 10:00"><strong>2 years ago</strong></div>
+  <div class="text" id="Hcom116280">
+<div class="phpcode"><code><span class="html">
+To people coming here by searching about namespaces, know that a consortium has studied about best practices in PHP, in order to allow developers to have common coding standards.<br /> <br />These best practices are called "PHP Standard Recommendations" , also known as PSR.<br /> <br />They are visible on this link : <a href="http://www.php-fig.org/psr" rel="nofollow" target="_blank">http://www.php-fig.org/psr</a><br /> <br />Actually there are 5 coding standards categories : <br />PSR-0 : Autoloading Standard , which goal is to make the use of Namespaces easier, in order to convert a namespace into a file path.<br />PSR-1 : Basic Coding Standard , basically, standards :) <br />PSR-2 : Coding Style Guide, where to put braces, how to write a class, etc.<br />PSR-3 : Logger Interface , how to write a standard logger<br />PSR-4 : Improved Autoloading , to resolve more Namespaces into paths.<br /> <br />The ones I want to point are PSR-0 and PSR-4 : they use namespaces to resolve a FQCN (Fully qualified class name = full namespace + class name) into a file path. <br />Basic example, you have this directory structure :<br />./src/Pierstoval/Tools/MyTool.php<br /><br />The namespacing PSR-0 or PSR-4 standard tells that you can transform this path into a FQCN.<br />Read the principles of autoload if you need to know what it means, because it's almost mandatory ;) .<br /><br />Structure :<br />{path}/autoloader.php<br />{path}/index.php<br />{path}/src/Pierstoval/Tools/MyTool.php<br /><br />Files :<br /><br /><span class="default">&lt;?php<br />&nbsp; &nbsp; </span><span class="comment">// {path}/index.php<br />&nbsp; &nbsp; </span><span class="keyword">include </span><span class="string">'autoloader.php'</span><span class="keyword">;<br />&nbsp; &nbsp; </span><span class="default">$tool </span><span class="keyword">= new </span><span class="default">Pierstoval</span><span class="keyword">/</span><span class="default">Tools</span><span class="keyword">/</span><span class="default">MyTool</span><span class="keyword">();<br /></span><span class="default">?&gt;<br /></span><br /><span class="default">&lt;?php<br />&nbsp; &nbsp; </span><span class="comment">// {path}/src/Pierstoval/Tools/MyTool.php<br />&nbsp; &nbsp; </span><span class="keyword">namespace </span><span class="default">Pierstoval</span><span class="keyword">\</span><span class="default">Tools</span><span class="keyword">;<br />&nbsp; &nbsp; class </span><span class="default">MyTool </span><span class="keyword">{}<br /></span><span class="default">?&gt;<br /></span><br /><span class="default">&lt;?php<br />&nbsp; &nbsp; </span><span class="comment">// {path}/autoloader.php<br />&nbsp; &nbsp; </span><span class="keyword">function </span><span class="default">loadClass</span><span class="keyword">(</span><span class="default">$className</span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$fileName </span><span class="keyword">= </span><span class="string">''</span><span class="keyword">;<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$namespace </span><span class="keyword">= </span><span class="string">''</span><span class="keyword">;<br /><br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">// Sets the include path as the "src" directory<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$includePath </span><span class="keyword">= </span><span class="default">dirname</span><span class="keyword">(</span><span class="default">__FILE__</span><span class="keyword">).</span><span class="default">DIRECTORY_SEPARATOR</span><span class="keyword">.</span><span class="string">'src'</span><span class="keyword">;<br /><br />&nbsp; &nbsp; &nbsp; &nbsp; if (</span><span class="default">false </span><span class="keyword">!== (</span><span class="default">$lastNsPos </span><span class="keyword">= </span><span class="default">strripos</span><span class="keyword">(</span><span class="default">$className</span><span class="keyword">, </span><span class="string">'\\'</span><span class="keyword">))) {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$namespace </span><span class="keyword">= </span><span class="default">substr</span><span class="keyword">(</span><span class="default">$className</span><span class="keyword">, </span><span class="default">0</span><span class="keyword">, </span><span class="default">$lastNsPos</span><span class="keyword">);<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$className </span><span class="keyword">= </span><span class="default">substr</span><span class="keyword">(</span><span class="default">$className</span><span class="keyword">, </span><span class="default">$lastNsPos </span><span class="keyword">+ </span><span class="default">1</span><span class="keyword">);<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$fileName </span><span class="keyword">= </span><span class="default">str_replace</span><span class="keyword">(</span><span class="string">'\\'</span><span class="keyword">, </span><span class="default">DIRECTORY_SEPARATOR</span><span class="keyword">, </span><span class="default">$namespace</span><span class="keyword">) . </span><span class="default">DIRECTORY_SEPARATOR</span><span class="keyword">;<br />&nbsp; &nbsp; &nbsp; &nbsp; }<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$fileName </span><span class="keyword">.= </span><span class="default">str_replace</span><span class="keyword">(</span><span class="string">'_'</span><span class="keyword">, </span><span class="default">DIRECTORY_SEPARATOR</span><span class="keyword">, </span><span class="default">$className</span><span class="keyword">) . </span><span class="string">'.php'</span><span class="keyword">;<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$fullFileName </span><span class="keyword">= </span><span class="default">$includePath </span><span class="keyword">. </span><span class="default">DIRECTORY_SEPARATOR </span><span class="keyword">. </span><span class="default">$fileName</span><span class="keyword">;<br />&nbsp; &nbsp; &nbsp; &nbsp; <br />&nbsp; &nbsp; &nbsp; &nbsp; if (</span><span class="default">file_exists</span><span class="keyword">(</span><span class="default">$fullFileName</span><span class="keyword">)) {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; require </span><span class="default">$fullFileName</span><span class="keyword">;<br />&nbsp; &nbsp; &nbsp; &nbsp; } else {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; echo </span><span class="string">'Class "'</span><span class="keyword">.</span><span class="default">$className</span><span class="keyword">.</span><span class="string">'" does not exist.'</span><span class="keyword">;<br />&nbsp; &nbsp; &nbsp; &nbsp; }<br />&nbsp; &nbsp; }<br />&nbsp; &nbsp; </span><span class="default">spl_autoload_register</span><span class="keyword">(</span><span class="string">'loadClass'</span><span class="keyword">); </span><span class="comment">// Registers the autoloader<br /></span><span class="default">?&gt;<br /></span> <br />A standardized autoloader will get the class you want to instanciate (MyTool) and get the FQCN, transform it into a file path, and check if the file exists. If it does, it will <span class="default">&lt;?php </span><span class="keyword">include(); </span><span class="default">?&gt;</span> it, and if you wrote your class correctly, the class will be available within its correct namespace.<br />Then, if you have the following code :<br /><span class="default">&lt;?php $tool </span><span class="keyword">= new </span><span class="default">Pierstoval</span><span class="keyword">/</span><span class="default">Tools</span><span class="keyword">/</span><span class="default">MyTool</span><span class="keyword">(); </span><span class="default">?&gt;<br /></span>The autoloader will transform the FQCN into this path :<br />{path}/src/Pierstoval/Tools/MyTool.php<br /><br />This might be the best practices ever in PHP framework developments, such as Symfony or others.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="113597">  <div class="votes">
+    <div id="Vu113597">
+    <a href="/manual/vote-note.php?id=113597&amp;page=language.namespaces.rationale&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd113597">
+    <a href="/manual/vote-note.php?id=113597&amp;page=language.namespaces.rationale&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V113597" title="58% like this...">
+    31
+    </div>
+  </div>
+  <a href="#113597" class="name">
+  <strong class="user"><em>php dot net at e-z dot name</em></strong></a><a class="genanchor" href="#113597"> &para;</a><div class="date" title="2013-11-03 05:32"><strong>3 years ago</strong></div>
+  <div class="text" id="Hcom113597">
+<div class="phpcode"><code><span class="html">
+php namespaces are case-insensitive:<br /><br />file1.php:<br /><span class="default">&lt;?php<br /></span><span class="keyword">namespace </span><span class="default">foo</span><span class="keyword">;<br /><br />function </span><span class="default">bar</span><span class="keyword">()<br />{<br />&nbsp; &nbsp; echo </span><span class="string">'from bar'</span><span class="keyword">;<br />}<br /><br /></span><span class="default">?&gt;<br /></span><br />file2.php:<br /><span class="default">&lt;?php<br /><br />fOo</span><span class="keyword">\</span><span class="default">bar</span><span class="keyword">() </span><span class="comment">// output: from bar<br /><br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="120791">  <div class="votes">
+    <div id="Vu120791">
+    <a href="/manual/vote-note.php?id=120791&amp;page=language.namespaces.rationale&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd120791">
+    <a href="/manual/vote-note.php?id=120791&amp;page=language.namespaces.rationale&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V120791" title="100% like this...">
+    1
+    </div>
+  </div>
+  <a href="#120791" class="name">
+  <strong class="user"><em>vlad dot 32418 at gmail dot com</em></strong></a><a class="genanchor" href="#120791"> &para;</a><div class="date" title="2017-03-11 08:30"><strong>1 month ago</strong></div>
+  <div class="text" id="Hcom120791">
+<div class="phpcode"><code><span class="html">
+I was not obvious for me...<br />You can't resolve variable names conflict via namespaces.<br /><br />somefile.php:<br /><br />namespace myspace {<br />&nbsp;&nbsp; $line = "some text";<br />&nbsp;&nbsp; function someFunc() { }<br />}<br /><br />If you attach this file:<br /><br />require_once("somefile.php");<br /><br />You should call the function this way:<br /><br />myspace\someFunc();<br /><br />But echo $line; would give you "some text".<br />(echo myspace\$line; would give you an error).</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="117849">  <div class="votes">
+    <div id="Vu117849">
+    <a href="/manual/vote-note.php?id=117849&amp;page=language.namespaces.rationale&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd117849">
+    <a href="/manual/vote-note.php?id=117849&amp;page=language.namespaces.rationale&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V117849" title="47% like this...">
+    -2
+    </div>
+  </div>
+  <a href="#117849" class="name">
+  <strong class="user"><em>sonkengmaldini at gmail dot com</em></strong></a><a class="genanchor" href="#117849"> &para;</a><div class="date" title="2015-08-19 08:43"><strong>1 year ago</strong></div>
+  <div class="text" id="Hcom117849">
+<div class="phpcode"><code><span class="html">
+Be aware that using&nbsp; character set UTF-8 with namespace will output a fatal error telling you that 'Namespace declaration statement has to be the very first statement in the script ' instead of that character use the UTF-8 (sans BOM) !<br />this will display the previous message <br /><span class="default">&lt;?php<br /></span><span class="keyword">namespace </span><span class="default">myNameSpace</span><span class="keyword">;</span><span class="comment">//fatal error! with UTF-8 character set <br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div></div>
+
+ <div class="foot"><a href="/manual/add-note.php?sect=language.namespaces.rationale&amp;redirect=http://php.net/manual/kr/language.namespaces.rationale.php"><img src='/images/notes-add@2x.png' alt='add a note' width='12' height='12'> <small>add a note</small></a></div>
+</section>    </section><!-- layout-content -->
+        <aside class='layout-menu'>
+    
+        <ul class='parent-menu-list'>
+                                    <li>
+                <a href="language.namespaces.php">네임스페이스</a>
+    
+                                    <ul class='child-menu-list'>
+    
+                          
+                        <li class="current">
+                            <a href="language.namespaces.rationale.php" title="네임스페이스 개요">네임스페이스 개요</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="language.namespaces.definition.php" title="Defining namespaces">Defining namespaces</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="language.namespaces.nested.php" title="Declaring sub-&#8203;namespaces">Declaring sub-&#8203;namespaces</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="language.namespaces.definitionmultiple.php" title="Defining multiple namespaces in the same file">Defining multiple namespaces in the same file</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="language.namespaces.basics.php" title="Using namespaces: Basics">Using namespaces: Basics</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="language.namespaces.dynamic.php" title="Namespaces and dynamic language features">Namespaces and dynamic language features</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="language.namespaces.nsconstants.php" title="namespace keyword and _&#8203;_&#8203;NAMESPACE_&#8203;_&#8203; constant">namespace keyword and _&#8203;_&#8203;NAMESPACE_&#8203;_&#8203; constant</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="language.namespaces.importing.php" title="Using namespaces: Aliasing/Importing">Using namespaces: Aliasing/Importing</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="language.namespaces.global.php" title="Global space">Global space</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="language.namespaces.fallback.php" title="Using namespaces: fallback to global function/constant">Using namespaces: fallback to global function/constant</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="language.namespaces.rules.php" title="Name resolution rules">Name resolution rules</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="language.namespaces.faq.php" title="FAQ: things you need to know about namespaces">FAQ: things you need to know about namespaces</a>
+                        </li>
+                            
+                    </ul>
+                    
+            </li>
+                        
+                    </ul>
+    </aside>
+
+
+  </div><!-- layout -->
+         
+  <footer>
+    <div class="container footer-content">
+      <div class="row-fluid">
+      <ul class="footmenu">
+        <li><a href="/copyright.php">Copyright &copy; 2001-2017 The PHP Group</a></li>
+        <li><a href="/my.php">My PHP.net</a></li>
+        <li><a href="/contact.php">Contact</a></li>
+        <li><a href="/sites.php">Other PHP.net sites</a></li>
+        <li><a href="/mirrors.php">Mirror sites</a></li>
+        <li><a href="/privacy.php">Privacy policy</a></li>
+      </ul>
+      </div>
+    </div>
+  </footer>
+
+    
+ <!-- External and third party libraries. -->
+ <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://php.net/cached.php?t=1421837618&amp;f=/js/ext/modernizr.js"></script>
+<script type="text/javascript" src="http://php.net/cached.php?t=1421837618&amp;f=/js/ext/hogan-2.0.0.min.js"></script>
+<script type="text/javascript" src="http://php.net/cached.php?t=1421837618&amp;f=/js/ext/typeahead.min.js"></script>
+<script type="text/javascript" src="http://php.net/cached.php?t=1421837618&amp;f=/js/ext/mousetrap.min.js"></script>
+<script type="text/javascript" src="http://php.net/cached.php?t=1421837618&amp;f=/js/search.js"></script>
+<script type="text/javascript" src="http://php.net/cached.php?t=1478627406&amp;f=/js/common.js"></script>
+
+<a id="toTop" href="javascript:;"><span id="toTopHover"></span><img width="40" height="40" alt="To Top" src="/images/to-top@2x.png"></a>
+
+</body>
+</html>
+
