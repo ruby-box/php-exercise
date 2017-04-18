@@ -1,5 +1,9 @@
 {
   "require" : {
-      "cebe/markdown": "~1.1.1"
-    }
+      "cebe/markdown": "~1.1.1",
+      "monolog/monolog": "^1.22"
+    },
+  "autoload": {
+      "psr-4": {"Greeting\\" : "./../composer/src/Greeting/"}
+  }
 }
